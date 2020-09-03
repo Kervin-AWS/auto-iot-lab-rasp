@@ -21,11 +21,10 @@ var LEDPin = new Gpio(18, 'out');
 // Require AWS IoT Device SDK
 const awsIoT = require('aws-iot-device-sdk');
 
-// Load the endpoint from file
-const endpointFile = require('./endpoint.json');
+const endpointAddress = 'a1ba8o0iqbelxz.ats.iot.cn-north-1.amazonaws.com.cn'
 
 // Fetch the thingName from the folder name
-const thingName = "car1";
+const thingName = "car-01";
 
 // Initial Get Client Token
 let initialGetClientToken;
@@ -46,7 +45,7 @@ const thingShadows = awsIoT.thingShadow({
   certPath: 'certificate.pem.crt',
     caPath: 'root-CA.pem',
   clientId: thingName,
-      host: endpointFile.endpointAddress
+      host: endpointAddress
 });
 
 // Register/Subscribe to the thingShadow topic
